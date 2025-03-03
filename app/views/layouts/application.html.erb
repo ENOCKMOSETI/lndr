@@ -26,9 +26,12 @@
     <nav>
       <%= link_to "Lndr", root_path %>
       <% if authenticated? %>
-        <%= link_to "Log out", session_path, method: :delete if authenticated? %>
+        <%= button_to "Log out", session_path, method: :delete if authenticated? %>
       <% else %>
+      <div>
         <%= link_to "Log in", new_session_path %>
+        <%= link_to "Sign up", new_registration_path %>
+      </div>
       <% end %>
     </nav>
     <main>
