@@ -3,12 +3,17 @@
 <div id="books">
     <ul>
         <% @books.each do |book| %>
-        <li>
-            <%= link_to book_path(book) do %>
-                <h2><%= book.title %></h2>
-                <p><%= book.author %></p>
-                <p><%= book.isbn %></p>
-            <% end %>
+        <li class="book">
+            <div>
+                <%= link_to book_path(book) do %>
+                    <h2><%= book.title %></h2>
+                    <p>by <%= book.author %></p>
+                    <p>ISBN: <%= book.isbn %></p>
+                <% end %>
+            </div>
+            <div>
+                <%= button_to "Borrow" %>
+            </div>
         </li>
         <% end %>
     </ul>

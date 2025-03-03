@@ -23,6 +23,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <%= link_to "Lndr", root_path %>
+      <% if authenticated? %>
+        <%= link_to "Log out", session_path, method: :delete if authenticated? %>
+      <% else %>
+        <%= link_to "Log in", new_session_path %>
+      <% end %>
+    </nav>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
