@@ -24,7 +24,9 @@
 
   <body>
     <nav>
-      <%= link_to "Lndr", root_path %>
+      <div class="logo">
+        <%= link_to "Lndr", root_path %>
+      </div>
       <% if authenticated? %>
         <%= button_to "Log out", session_path, method: :delete if authenticated? %>
       <% else %>
