@@ -1,0 +1,23 @@
+<h1>Borrowed Books</h1>
+<% flash.each do |type, message| %>
+  <div class="flash flash-<%= type %>">
+    <%= message %>
+  </div>
+<% end %>
+
+<% if @borrowings.any? %>
+  <% @borrowings.each do |borrowing| %>
+  <div class="book">
+    <div>
+    <h2><%= borrowing.book.title %></h2>
+    <p>by <%= borrowing.book.author %></p>
+    <p>Due Date: <%= borrowing.due_date.strftime("%Y-%m-%d") %></p>
+    </div>
+    <div class="borrow-btn">
+    <%= button_to "Return", borrowing_path(borrowing), method: :delete %>
+    </div>
+  </div>
+  <% end %>
+<% else %>
+  <p>You have no borrowed books. <%= link_to 'Browse books', root_path %></p>
+<% end %>

@@ -28,7 +28,10 @@
         <%= link_to "Lndr", root_path %>
       </div>
       <% if authenticated? %>
+      <div class="user">
+        <%= link_to "Profile", profile_path %>
         <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+      </div>
       <% else %>
       <div>
         <%= link_to "Log in", new_session_path %>

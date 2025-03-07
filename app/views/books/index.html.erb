@@ -10,8 +10,8 @@
                     <p>ISBN: <%= book.isbn %></p>
                 <% end %>
             </div>
-            <div class="borrow-btn">
-                <%= button_to "Borrow" %>
+            <div class="borrow-info">
+                <%= link_to (book.borrowings.exists? ? "Checked out" : "Borrow"), book_path(book) %>
             </div>
         </div>
     <% end %>

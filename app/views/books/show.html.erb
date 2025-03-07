@@ -1,11 +1,20 @@
 <span class="breadcrumbs"><%= link_to "Books", books_path %> / <%= link_to @book.title, @book %><span>
+<% flash.each do |type, message| %>
+    <div class="flash flash-<%= type %>">
+        <%= message %>
+    </div>
+<% end %>
 <div class="book">
     <div>
         <h1><%= @book.title %></h1>
         <p>by <%= @book.author %></p>
         <p>ISBN: <%= @book.isbn %></p>
     </div>
-    <div>
-        <%= button_to "Borrow" %>
+    <div class="borrow-btn">
+        <% if @book.borrowings.exists? %>
+            <%= button_to "Borrowed", profile_path, method: :get %>
+        <% else %>
+            <%= button_to "Borrow", book_borrowings_path(@book), method: :post %>
+        <% end %>
     </div>
 </div>
