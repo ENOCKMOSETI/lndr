@@ -2,12 +2,12 @@ require "test_helper"
 
 class BorrowingsControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
-    get borrowings_create_url
-    assert_response :success
+    post book_borrowings_path(books(:one))
+    assert_response :redirect
   end
 
   test "should get destroy" do
-    get borrowings_destroy_url
-    assert_response :success
+    delete borrowing_path(borrowings(:one))
+    assert_response :redirect
   end
 end
